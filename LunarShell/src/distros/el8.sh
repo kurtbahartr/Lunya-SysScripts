@@ -64,7 +64,7 @@ curl --silent https://shell.lunarlabs.cc/asset/bashrc_el8 > /etc/bashrc
 curl --silent https://shell.lunarlabs.cc/asset/zshrc > /etc/zshrc
 echo "[+] LunarShell files downloaded and installed"
 echo "[/] Applying Starship-specific configurations.." 
-echo "export STARSHIP_CONFIG=/etc/starship.toml" > /etc/profile.d/pinkcloud-var.sh
+for i in bashrc zshrc; do echo "export STARSHIP_CONFIG=/etc/starship.toml" | sudo tee -a /etc/$i > /dev/null; done
 echo 'eval "$(/usr/local/bin/starship init bash)"' >> /etc/bashrc
 echo 'eval "$(/usr/local/bin/starship init zsh)"' >> /etc/zshrc
 echo "[+] Starship configurations applied"
